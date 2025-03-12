@@ -4,14 +4,11 @@ class Solution {
         boolean answer = true;
         Arrays.sort(phone_book);
         
-        String a = phone_book[0];
-        for(int i=1;i<phone_book.length;i++){
-            if(phone_book[i].startsWith(a)){
+        for(int i=0;i<phone_book.length-1;i++){
+            if(phone_book[i+1].startsWith(phone_book[i])){
                 answer=false;
             }
-            else{
-                a = phone_book[i];
-            }
+
         }
    return answer;
     }
