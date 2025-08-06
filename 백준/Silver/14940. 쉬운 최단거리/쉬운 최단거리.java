@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class Main {
+public class Main{
 	static int n;
 	static int m;
 	static int[][] area;
@@ -46,12 +46,14 @@ public class Main {
 		}
 		bfs(start_x, start_y);
 
+		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < m; j++) {
-				System.out.print(result[i][j] + " ");
+				sb.append(result[i][j]+" ");
 			}
-			System.out.println();
+			sb.append("\n");
 		}
+		System.out.println(sb);
 
 	}
 
