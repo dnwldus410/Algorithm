@@ -1,27 +1,39 @@
 import java.util.*;
 class Solution {
-    public static int result;
+    static int result;
+    static int sum;
+    static boolean[] visited;
+  static int[] number;
     public int solution(int[] numbers, int target) {
-        int answer = 0;
-        result=0;
-        dfs(numbers,0,numbers.length,0,target);
-        answer=result;
-        return answer;
+         for(int i=0;i<numbers.length;i++){
+          sum+=numbers[i];
+      }
+        number=numbers;
+        visited=new boolean[numbers.length];
+      
+        for(int i=1;i<=number.length;i++){
+             dfs(0,target,0,i,0);
+        }
+         
+      
+        return result;
+    }
+    public static void dfs(int num,int target,int depth, int end,int start){
+        if(depth==end){
+       
+            if(sum+(num*2)==target){
+                result++;
+            }
+            return;
+        }
+        for(int i=start;i<number.length;i++){
+            if(!visited[i]){
+                visited[i]=true;
+                dfs(num-number[i],target,depth+1,end,i);
+                visited[i]=false;
+            }
+        }
     }
     
-    public static void dfs(int[] numbers,int start,int max,int num,int target){
-        if(start==max){
-            if(num==target){
-                result++;
-               
-            }
-             return;
-        }
-        int count=num;
-        count+=numbers[start];
-        dfs(numbers,start+1,max,count,target);
-        count=num;
-        count-=numbers[start];
-        dfs(numbers,start+1,max,count,target);
-    }
+ 
 }
